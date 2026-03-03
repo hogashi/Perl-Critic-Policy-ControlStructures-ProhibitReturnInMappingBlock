@@ -7,7 +7,7 @@ use List::Util qw(any);
 use Perl::Critic::Utils qw(:severities);
 use constant EXPL => 'A "return" in a mapping block causes confusing behavior.';
 
-my @MAPPING_BLOCK_KEYWORDS = qw(map grep);
+my @MAPPING_BLOCK_KEYWORDS = qw(map grep sort);
 
 our $VERSION = "0.03";
 
