@@ -57,57 +57,57 @@ __END__
 
 =head1 NAME
 
-Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock - Do not "return" in "do" block
+Perl::Critic::Policy::ControlStructures::ProhibitReturnInMappingBlock - Do not "return" in mapping blocks (map, grep, sort)
 
 =head1 AFFILIATION
- 
-This policy is a policy in the L<Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock> distribution.
+
+This policy is part of the L<Perl::Critic::Policy::ControlStructures::ProhibitReturnInMappingBlock> distribution.
 
 =head1 DESCRIPTION
 
-Using C<return> statement in C<do> block causes unexpected behavior. A C<return> returns from entire subroutine, not from C<do> block.
+Using C<return> in a mapping block (C<map>, C<grep>, or C<sort>) causes unexpected behavior.
+A C<return> exits the entire enclosing subroutine, not just the block.
 
-    sub foo {
-        my ($x) = @_;
-        my $y = do {
-            return 2 if $x < 10; # not ok
-            return 3 if $x < 100; # not ok
-            4;
-        };
-        return $x * $y;
-    }
-    print foo(5); # prints 2, not 10;
-
-If you want to do early-return, you should move the body of C<do> block to a new subroutine and call it.
-
-    sub calc_y {
-        my ($x) = @_;
-        return 2 if $x < 10;
-        return 3 if $x < 100;
-        return 4;
+    sub func {
+        my @list = (1, 2, 3);
+        my @result = map {
+            return 0 unless $_; # not ok
+            $_ + 5;
+        } @list;
+        return @result;
     }
 
-    sub foo {
-        my ($x) = @_;
-        my $y = calc_y($x);
-        return $x * $y;
+If you want to skip an element, use C<next> instead:
+
+    sub func {
+        my @list = (1, 2, 3);
+        my @result = map {
+            next unless $_;
+            $_ + 5;
+        } @list;
+        return @result;
     }
-    print foo(5); # prints 10
+
+This applies equally to C<grep> and C<sort> blocks.
 
 =head1 CONFIGURATION
- 
+
 This Policy is not configurable except for the standard options.
+
+=head1 SEE ALSO
+
+L<Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock> by utgwkk, which inspired this policy.
 
 =head1 LICENSE
 
-Copyright (C) utgwkk.
+Copyright (C) hogashi.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 AUTHOR
 
-utgwkk E<lt>utagawakiki@gmail.comE<gt>
+hogashi
 
 =cut
 

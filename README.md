@@ -1,53 +1,53 @@
 # NAME
 
-Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock - Do not "return" in "do" block
+Perl::Critic::Policy::ControlStructures::ProhibitReturnInMappingBlock - Do not "return" in mapping blocks (map, grep, sort)
 
 # AFFILIATION
 
-This policy is a policy in the [Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock](https://metacpan.org/pod/Perl%3A%3ACritic%3A%3APolicy%3A%3AControlStructures%3A%3AProhibitReturnInDoBlock) distribution.
+This policy is part of the [Perl::Critic::Policy::ControlStructures::ProhibitReturnInMappingBlock](https://metacpan.org/pod/Perl%3A%3ACritic%3A%3APolicy%3A%3AControlStructures%3A%3AProhibitReturnInMappingBlock) distribution.
 
 # DESCRIPTION
 
-Using `return` statement in `do` block causes unexpected behavior. A `return` returns from entire subroutine, not from `do` block.
+Using `return` in a mapping block (`map`, `grep`, or `sort`) causes unexpected behavior.
+A `return` exits the entire enclosing subroutine, not just the block.
 
-    sub foo {
-        my ($x) = @_;
-        my $y = do {
-            return 2 if $x < 10; # not ok
-            return 3 if $x < 100; # not ok
-            4;
-        };
-        return $x * $y;
-    }
-    print foo(5); # prints 2, not 10;
-
-If you want to do early-return, you should move the body of `do` block to a new subroutine and call it.
-
-    sub calc_y {
-        my ($x) = @_;
-        return 2 if $x < 10;
-        return 3 if $x < 100;
-        return 4;
+    sub func {
+        my @list = (1, 2, 3);
+        my @result = map {
+            return 0 unless $_; # not ok
+            $_ + 5;
+        } @list;
+        return @result;
     }
 
-    sub foo {
-        my ($x) = @_;
-        my $y = calc_y($x);
-        return $x * $y;
+If you want to skip an element, use `next` instead:
+
+    sub func {
+        my @list = (1, 2, 3);
+        my @result = map {
+            next unless $_;
+            $_ + 5;
+        } @list;
+        return @result;
     }
-    print foo(5); # prints 10
+
+This applies equally to `grep` and `sort` blocks.
 
 # CONFIGURATION
 
 This Policy is not configurable except for the standard options.
 
+# SEE ALSO
+
+[Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock](https://metacpan.org/pod/Perl%3A%3ACritic%3A%3APolicy%3A%3AControlStructures%3A%3AProhibitReturnInDoBlock) by utgwkk, which inspired this policy.
+
 # LICENSE
 
-Copyright (C) utgwkk.
+Copyright (C) hogashi.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 # AUTHOR
 
-utgwkk <utagawakiki@gmail.com>
+hogashi
