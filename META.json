@@ -68,7 +68,7 @@
          "web" : "https://github.com/hogashi/Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock"
       }
    },
-   "version" : "0.03",
+   "version" : "0.01",
    "x_contributors" : [
       "hogashi <azuma.ginkakuji@gmail.com>",
       "utgwkk <utagawakiki@gmail.com>"

@@ -9,7 +9,7 @@ use constant EXPL => 'A "return" in a mapping block causes confusing behavior.';
 
 my @MAPPING_BLOCK_KEYWORDS = qw(map grep sort);
 
-our $VERSION = "0.03";
+our $VERSION = "0.01";
 
 sub supported_parameters { return (); }
 sub default_severity     { return $SEVERITY_HIGHEST; }
