@@ -1,16 +1,9 @@
-Revision history for Perl extension Perl-Critic-Policy-ControlStructures-ProhibitReturnInDoBlock
+Revision history for Perl extension Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock
 
 {{$NEXT}}
 
-0.03 2020-11-16T02:12:10Z
+0.01 2026-03-03T00:00:00Z
 
-    - Change default themes (github PR: #2)
-
-0.02 2020-11-14T10:15:31Z
-
-    - Do not violate return statement in do-(while|until) loop (github PR: #1)
-
-0.01 2020-11-12T11:54:31Z
-
-    - original version
+    - Initial release, forked from Perl-Critic-Policy-ControlStructures-ProhibitReturnInDoBlock by utgwkk
+    - Detect "return" in map, grep, and sort blocks
 
