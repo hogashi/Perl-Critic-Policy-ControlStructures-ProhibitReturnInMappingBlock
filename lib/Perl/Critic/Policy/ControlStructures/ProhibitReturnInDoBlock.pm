@@ -5,8 +5,8 @@ use warnings;
 use parent 'Perl::Critic::Policy';
 use List::Util qw(any);
 use Perl::Critic::Utils qw(:severities);
-use constant DESC => '"return" statement in "do" block.';
-use constant EXPL => 'A "return" in "do" block causes confusing behavior.';
+use constant DESC => '"return" statement in "map" block.';
+use constant EXPL => 'A "return" in "map" block causes confusing behavior.';
 
 our $VERSION = "0.03";
 
@@ -18,8 +18,7 @@ sub applies_to           { return 'PPI::Structure::Block'; }
 sub violates {
     my ($self, $elem, undef) = @_;
 
-    return if !_is_do_block($elem);
-    return if _is_do_loop($elem);
+    return if !_is_map_block($elem);
 
     my @stmts = $elem->schildren;
     return if !@stmts;
@@ -33,17 +32,11 @@ sub violates {
     return @violations;
 }
 
-sub _is_do_block {
+sub _is_map_block {
     my ($elem) = @_;
 
     return 0 if !$elem->sprevious_sibling;
-    return $elem->sprevious_sibling->content eq 'do';
-}
-
-sub _is_do_loop {
-    my ($elem) = @_;
-    return 0 if !$elem->snext_sibling;
-    return $elem->snext_sibling->content eq 'while' || $elem->snext_sibling->content eq 'until';
+    return $elem->sprevious_sibling->content eq 'map';
 }
 
 sub _is_return {
