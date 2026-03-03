@@ -5,8 +5,9 @@ use warnings;
 use parent 'Perl::Critic::Policy';
 use List::Util qw(any);
 use Perl::Critic::Utils qw(:severities);
-use constant DESC => '"return" statement in "map" block.';
-use constant EXPL => 'A "return" in "map" block causes confusing behavior.';
+use constant EXPL => 'A "return" in a mapping block causes confusing behavior.';
+
+my @MAPPING_BLOCK_KEYWORDS = qw(map grep);
 
 our $VERSION = "0.03";
 
@@ -18,25 +19,29 @@ sub applies_to           { return 'PPI::Structure::Block'; }
 sub violates {
     my ($self, $elem, undef) = @_;
 
-    return if !_is_map_block($elem);
+    my $keyword = _mapping_block_keyword($elem);
+    return if !$keyword;
 
+    my $desc = sprintf('"return" statement in "%s" block.', $keyword);
     my @stmts = $elem->schildren;
     return if !@stmts;
 
     my @violations;
 
     for my $stmt (@stmts) {
-        push @violations, $self->violation(DESC, EXPL, $stmt) if _is_return($stmt);
+        push @violations, $self->violation($desc, EXPL, $stmt) if _is_return($stmt);
     }
 
     return @violations;
 }
 
-sub _is_map_block {
+sub _mapping_block_keyword {
     my ($elem) = @_;
 
-    return 0 if !$elem->sprevious_sibling;
-    return $elem->sprevious_sibling->content eq 'map';
+    return if !$elem->sprevious_sibling;
+    my $keyword = $elem->sprevious_sibling->content;
+    return $keyword if any { $keyword eq $_ } @MAPPING_BLOCK_KEYWORDS;
+    return;
 }
 
 sub _is_return {
