@@ -1,4 +1,4 @@
-name = "Perl-Critic-Policy-ControlStructures-ProhibitReturnInDoBlock"
+name = "Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock"
 # badges = ["travis-ci.com"]
 authority="cpan:UTGWKK"
 

@@ -1,6 +1,6 @@
 use Test2::V0;
 use Perl::Critic;
-use Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock;
+use Perl::Critic::Policy::ControlStructures::ProhibitReturnInMappingBlock;
 
 my @testcases = (
     {
@@ -78,7 +78,7 @@ for my $testcase (@testcases) {
         <$fh>;
     };
     my $critic = Perl::Critic->new(
-        '-single-policy' => 'ControlStructures::ProhibitReturnInDoBlock',
+        '-single-policy' => 'ControlStructures::ProhibitReturnInMappingBlock',
     );
     my @violations = $critic->critique( \$code );
 

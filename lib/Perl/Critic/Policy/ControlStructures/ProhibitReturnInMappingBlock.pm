@@ -1,4 +1,4 @@
-package Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock;
+package Perl::Critic::Policy::ControlStructures::ProhibitReturnInMappingBlock;
 use 5.008001;
 use strict;
 use warnings;
