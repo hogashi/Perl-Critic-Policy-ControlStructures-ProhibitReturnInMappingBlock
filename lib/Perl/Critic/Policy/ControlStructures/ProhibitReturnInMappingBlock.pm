@@ -100,7 +100,7 @@ L<Perl::Critic::Policy::ControlStructures::ProhibitReturnInDoBlock> by utgwkk, w
 
 =head1 LICENSE
 
-Copyright (C) hogashi.
+Copyright (C) 2026 hogashi. Portions copyright (C) 2020 utgwkk.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.

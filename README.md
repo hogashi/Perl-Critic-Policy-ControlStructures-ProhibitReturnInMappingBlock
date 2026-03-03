@@ -43,7 +43,7 @@ This Policy is not configurable except for the standard options.
 
 # LICENSE
 
-Copyright (C) hogashi.
+Copyright (C) 2026 hogashi. Portions copyright (C) 2020 utgwkk.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
