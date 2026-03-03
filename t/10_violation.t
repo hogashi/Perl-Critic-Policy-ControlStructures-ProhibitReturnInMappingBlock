@@ -50,6 +50,18 @@ my @testcases = (
         },
     },
     {
+        description => 'single violation in grep block',
+        filename    => 't/data/grep-single.pl',
+        expected    => array {
+            item object {
+                call description   => '"return" statement in "grep" block';
+                call line_number   => 8;
+                call column_number => 9;
+            };
+            end;
+        },
+    },
+    {
         description => 'anonymous subroutine call is OK',
         filename    => 't/data/anonymous-subroutine-call.pl',
         expected    => [],
