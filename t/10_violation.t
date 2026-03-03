@@ -8,7 +8,7 @@ my @testcases = (
         filename    => 't/data/single.pl',
         expected    => array {
             item object {
-                call description   => '"return" statement in "do" block';
+                call description   => '"return" statement in "map" block';
                 call line_number   => 8;
                 call column_number => 9;
             };
@@ -20,12 +20,12 @@ my @testcases = (
         filename    => 't/data/multiple.pl',
         expected    => array {
             item object {
-                call description   => '"return" statement in "do" block';
+                call description   => '"return" statement in "map" block';
                 call line_number   => 8;
                 call column_number => 9;
             };
             item object {
-                call description   => '"return" statement in "do" block';
+                call description   => '"return" statement in "map" block';
                 call line_number   => 9;
                 call column_number => 9;
             };
@@ -37,12 +37,12 @@ my @testcases = (
         filename    => 't/data/multiple-subroutines.pl',
         expected    => array {
             item object {
-                call description   => '"return" statement in "do" block';
+                call description   => '"return" statement in "map" block';
                 call line_number   => 8;
                 call column_number => 9;
             };
             item object {
-                call description   => '"return" statement in "do" block';
+                call description   => '"return" statement in "map" block';
                 call line_number   => 19;
                 call column_number => 9;
             };
@@ -67,16 +67,6 @@ my @testcases = (
     {
         description => '`return` in loop block is OK',
         filename    => 't/data/loop-block.pl',
-        expected    => [],
-    },
-    {
-        description => '`return` in do-while loop block is OK',
-        filename    => 't/data/do-while.pl',
-        expected    => [],
-    },
-    {
-        description => '`return` in do-until loop block is OK',
-        filename    => 't/data/do-until.pl',
         expected    => [],
     },
 );

@@ -2,15 +2,15 @@ use strict;
 use warnings;
 
 sub func {
-    my ($x) = @_;
+    my @list = (1, 2, 3);
 
-    my $y = do {
-        return 0 unless $x;
-        return 1 if $x < 5;
-        $x + 5;
-    };
+    my @result = map {
+        return 0 unless $_;
+        return 1 if $_ < 5;
+        $_ + 5;
+    } @list;
 
-    return $y + 5;
+    return @result;
 }
 
-print func(0);
+print func();
