@@ -1,10 +1,10 @@
 {
-   "abstract" : "Do not \"return\" in \"do\" block",
+   "abstract" : "Do not \"return\" in mapping blocks (map, grep, sort)",
    "author" : [
-      "utgwkk <utagawakiki@gmail.com>"
+      "hogashi"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v3.1.11, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Minilla/v3.1.29, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : 2
    },
-   "name" : "Perl-Critic-Policy-ControlStructures-ProhibitReturnInDoBlock",
+   "name" : "Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock",
    "no_index" : {
       "directory" : [
          "t",
@@ -59,17 +59,20 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/utgwkk/Perl-Critic-Policy-ControlStructures-ProhibitReturnInDoBlock/issues"
+         "web" : "https://github.com/hogashi/Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock/issues"
       },
-      "homepage" : "https://github.com/utgwkk/Perl-Critic-Policy-ControlStructures-ProhibitReturnInDoBlock",
+      "homepage" : "https://github.com/hogashi/Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/utgwkk/Perl-Critic-Policy-ControlStructures-ProhibitReturnInDoBlock.git",
-         "web" : "https://github.com/utgwkk/Perl-Critic-Policy-ControlStructures-ProhibitReturnInDoBlock"
+         "url" : "https://github.com/hogashi/Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock.git",
+         "web" : "https://github.com/hogashi/Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock"
       }
    },
    "version" : "0.03",
-   "x_authority" : "cpan:UTGWKK",
-   "x_serialization_backend" : "JSON::PP version 4.02",
+   "x_contributors" : [
+      "hogashi <azuma.ginkakuji@gmail.com>",
+      "utgwkk <utagawakiki@gmail.com>"
+   ],
+   "x_serialization_backend" : "JSON::PP version 4.16",
    "x_static_install" : 1
 }
