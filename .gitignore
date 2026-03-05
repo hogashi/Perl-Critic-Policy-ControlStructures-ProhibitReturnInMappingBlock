@@ -29,3 +29,4 @@ cover_db/
 MYMETA.*
 
 /Perl-Critic-Policy-ControlStructures-ProhibitReturnInMappingBlock-*
+.pause
